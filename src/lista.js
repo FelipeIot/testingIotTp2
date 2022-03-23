@@ -1,3 +1,5 @@
+const { isString } = require("mocha/lib/utils");
+
 module.exports = class Lista {
 
     #elements
@@ -29,14 +31,25 @@ module.exports = class Lista {
         return null;
 
     }
-    add(key, valor) {
+    add(key, value) {
+        if (!isString(key)) {
+            return;
+        }
         let index = this.#get_index(key);
         if (!isNaN(index)) {
-            this.#elements[index].value = valor;
+            this.#elements[index].value = value;
         }
         else {
-            this.#elements.push({ "key": key, "value": valor });
+            this.#elements.push({ "key": key, "value": value });
         }
+
+
+    }
+    keylist() {
+        let array=[];
+        this.#elements.forEach(element=>array.push(element.key));
+        array.sort();
+        return array;
 
     }
 

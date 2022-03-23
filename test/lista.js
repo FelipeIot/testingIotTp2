@@ -105,5 +105,27 @@ describe("lista de pares clave:valor", function () {
 
     }
     )
+    describe("elimino un elemento a una lista de tres elementos", function () {
+        var lista = new Lista();
+        lista.add("carta", "espada");
+        lista.add("cadena", "valor");
+        lista.add("carro", "pqf-343");
+
+
+        it("hay dos elementos almacenados", function () {
+            lista.delete("carta");
+            assert.equal(lista.count(), 2);
+        })
+        it("el elemento eliminado no debe aparecer en la lista de claves", function () {
+      
+            const expected = ['cadena', 'carro'];
+            const actual = lista.keylist();
+            assert.deepEqual(expected, actual);
+        })
+
+
+
+    }
+    )
 
 })
